@@ -958,6 +958,13 @@ function fbListen(col, cb) {
   });
 }
 
+// ===== STATE =====
+const MEMBERS = [
+  { id: 'mijung', name: '미정', avatar: '美', cls: 'a' },
+  { id: 'm2',     name: '멤버2', avatar: '花', cls: 'b' },
+  { id: 'm3',     name: '멤버3', avatar: '星', cls: 'c' },
+];
+
 // Local state (synced from Firebase)
 let attendance = [];
 let events = [];
@@ -1363,59 +1370,48 @@ function showToast(msg) {
 const now = new Date();
 document.getElementById('todayBadge').textContent = `${now.getMonth()+1}월 ${now.getDate()}일`;
 
-// N3 강의 기본 세팅 (독해 10강 → 청해 13강, 8주 완강 목표)
-// 독해 먼저, 주 3회 스터디 기준 하루 목표 1강씩
-const DEFAULT_GOALS = { reading: 1, listening: 1, grammar: 0 };
-const DEFAULT_TOTALS = { reading: 10, listening: 13, grammar: 0 };
+// N3 기본 세팅
+lecGoals = { reading: 1, listening: 1, grammar: 0 };
+lecTotals = { reading: 10, listening: 13, grammar: 0 };
 
-async function initApp() {
-  // Load lecture settings
+// 1) 즉시 렌더링 (Firebase 연결 전에도 화면 표시)
+renderHome();
+renderHistory();
+renderNotices();
+
+// 2) Firebase 백그라운드 연결
+function initApp() {
   try {
-    const lecSettings = await fbGet('lecSettings', 'goals');
-    if (lecSettings) {
-      lecGoals = lecSettings.goals || DEFAULT_GOALS;
-      lecTotals = lecSettings.totals || DEFAULT_TOTALS;
-    } else {
-      lecGoals = DEFAULT_GOALS;
-      lecTotals = DEFAULT_TOTALS;
-      await fbSet('lecSettings', 'goals', { goals: lecGoals, totals: lecTotals });
-    }
+    fbListen('attendance', docs => {
+      attendance = docs;
+      renderHistory();
+      renderHome();
+    });
+    fbListen('events', docs => {
+      events = docs;
+      renderHome();
+      // 캘린더 탭이 열려있을 때만 렌더
+      if (document.getElementById('calendar').classList.contains('active')) renderCalendar();
+    });
+    fbListen('notices', docs => {
+      notices = docs;
+      renderNotices();
+    });
+    fbListen('lecLog', docs => {
+      lecLog = docs;
+      renderOverallProgress();
+      renderLectureLog();
+    });
+    // 강의 설정 로드
+    fbGet('lecSettings', 'goals').then(s => {
+      if (s) { lecGoals = s.goals || lecGoals; lecTotals = s.totals || lecTotals; }
+    }).catch(() => {});
   } catch(e) {
-    lecGoals = DEFAULT_GOALS;
-    lecTotals = DEFAULT_TOTALS;
+    console.error('Firebase init error:', e);
   }
-
-  // Realtime listeners
-  fbListen('attendance', docs => {
-    attendance = docs;
-    renderHistory();
-    renderHome();
-  });
-  fbListen('events', docs => {
-    events = docs;
-    renderCalendar();
-    renderHome();
-  });
-  fbListen('notices', docs => {
-    notices = docs;
-    renderNotices();
-  });
-  fbListen('lecLog', docs => {
-    lecLog = docs;
-    renderOverallProgress();
-    renderLectureLog();
-  });
-
-  renderHome();
-  renderHistory();
 }
 
-initApp().catch(e => {
-  showToast('⚠️ Firebase 연결 실패');
-  renderHome();
-  renderHistory();
-  console.error(e);
-});
+initApp();
 </script>
 
 </body>
