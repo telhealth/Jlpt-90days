@@ -11,15 +11,22 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f2f7;min-height:100vh}
 
-.hd{background:#1a1a2e;padding:15px 18px;display:flex;align-items:center;justify-content:space-between}
+.hd{background:#1a1a2e;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
 .hd-left h1{color:#d4a843;font-size:17px;font-weight:700;letter-spacing:1.5px}
 .hd-left p{color:rgba(255,255,255,.4);font-size:10px;margin-top:2px}
-.dday{background:rgba(255,255,255,.1);border-radius:10px;padding:6px 12px;text-align:center}
-.dday b{display:block;font-family:Georgia,serif;font-size:21px;color:#d4a843;line-height:1}
-.dday span{font-size:9px;color:rgba(255,255,255,.4)}
+.dday-box{background:rgba(255,255,255,.1);border-radius:10px;padding:6px 13px;text-align:center;min-width:64px}
+.dday-box b{display:block;font-family:Georgia,serif;font-size:22px;color:#d4a843;line-height:1.1}
+.dday-box span{font-size:9px;color:rgba(255,255,255,.4)}
+
+/* 이름 선택 */
+.who-bar{background:#fff;border-bottom:1px solid #e5e5ea;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.who-label{font-size:11px;color:#8e8e93;font-weight:600;white-space:nowrap}
+.who-btns{display:flex;gap:6px}
+.who-btn{padding:6px 14px;border-radius:20px;border:1.5px solid #e5e5ea;background:#fff;font-size:12px;font-weight:600;color:#8e8e93;cursor:pointer;transition:all .2s}
+.who-btn.on{background:#1a1a2e;color:#d4a843;border-color:#1a1a2e}
 
 .tabs{display:flex;background:#fff;border-bottom:1px solid #e5e5ea}
-.tab{flex:1;padding:10px 2px;border:none;background:transparent;font-size:11px;font-weight:500;color:#8e8e93;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.tab{flex:1;padding:10px 2px;border:none;background:transparent;font-size:11px;font-weight:500;color:#8e8e93;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
 .tab.on{color:#c84b31;border-bottom-color:#c84b31;font-weight:700}
 
 .wrap{padding:14px;max-width:430px;margin:0 auto}
@@ -28,7 +35,13 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 .card{background:#fff;border-radius:13px;padding:15px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .ct{font-size:10px;font-weight:700;color:#8e8e93;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
 
-/* 오늘 입력 */
+/* 알람 배너 */
+.alert-banner{background:#feeae8;border:1.5px solid #f4b8b0;border-radius:13px;padding:13px 15px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
+.alert-icon{font-size:20px;flex-shrink:0}
+.alert-title{font-size:13px;font-weight:700;color:#c84b31;margin-bottom:3px}
+.alert-msg{font-size:12px;color:#a03020;line-height:1.6}
+
+/* 입력 */
 .input-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f2f2f7}
 .input-row:last-of-type{border-bottom:none;padding-bottom:0}
 .ir-left{display:flex;align-items:center;gap:10px}
@@ -37,35 +50,29 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 .ir-name{font-size:13px;font-weight:600;color:#1c1c1e}
 .ir-sub{font-size:10px;color:#8e8e93;margin-top:1px}
 .counter{display:flex;align-items:center;gap:7px}
-.cb{width:30px;height:30px;border-radius:50%;border:1.5px solid #d1d1d6;background:#fff;font-size:16px;font-weight:700;color:#444;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.cb:active{background:#f2f2f7;border-color:#c84b31}
+.cb{width:30px;height:30px;border-radius:50%;border:1.5px solid #d1d1d6;background:#fff;font-size:16px;font-weight:700;color:#444;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cb:active{background:#f2f2f7}
 .cnum{font-size:20px;font-weight:700;color:#1c1c1e;min-width:28px;text-align:center}
 .cunit{font-size:11px;color:#8e8e93}
-
-/* 메모 */
 .memo-wrap{margin-top:12px;padding-top:12px;border-top:1px solid #f2f2f7}
 .memo-wrap label{font-size:11px;color:#8e8e93;display:block;margin-bottom:6px;font-weight:600}
 .memo-input{width:100%;padding:9px 11px;border:1px solid #e5e5ea;border-radius:9px;font-family:inherit;font-size:13px;color:#1c1c1e;outline:none;resize:none;background:#fafafa}
 .memo-input:focus{border-color:#c84b31;background:#fff}
-
 .save-btn{width:100%;padding:12px;background:#c84b31;color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;margin-top:12px}
 .save-btn:active{opacity:.85}
 
-/* 멤버 현황 */
-.member-card{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:1px solid #f2f2f7}
+/* 멤버 */
+.member-card{display:flex;align-items:flex-start;gap:11px;padding:12px 0;border-bottom:1px solid #f2f2f7}
 .member-card:last-child{border-bottom:none;padding-bottom:0}
-.m-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.m-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
 .av-a{background:#fce8e3;color:#c84b31}.av-b{background:#e3f0e8;color:#4a7c59}.av-c{background:#e3eaf5;color:#2d5f8a}
-.m-info{flex:1}
-.m-name{font-size:13px;font-weight:600;color:#1c1c1e}
-.m-today{font-size:11px;color:#555;margin-top:3px;line-height:1.5}
-.m-memo{font-size:11px;color:#8e8e93;margin-top:3px;font-style:italic}
-.m-none{font-size:11px;color:#c7c7cc;margin-top:3px}
-.chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.m-name{font-size:13px;font-weight:700;color:#1c1c1e}
+.m-sub{font-size:10px;color:#8e8e93;margin-top:1px}
+.chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
 .chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:7px}
-.chip-r{background:#eef3fb;color:#2d5f8a}
-.chip-l{background:#eaf6ef;color:#4a7c59}
-.chip-v{background:#fef9e8;color:#b8860b}
+.chip-r{background:#eef3fb;color:#2d5f8a}.chip-l{background:#eaf6ef;color:#4a7c59}.chip-v{background:#fef9e8;color:#b8860b}
+.m-memo{font-size:11px;color:#555;margin-top:4px;font-style:italic}
+.m-none{font-size:11px;color:#c7c7cc;margin-top:4px}
 
 /* 진도 */
 .prog-blk{margin-bottom:15px}.prog-blk:last-child{margin-bottom:0}
@@ -77,8 +84,7 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 .prog-foot{display:flex;justify-content:space-between;align-items:center}
 .prog-pct{font-size:11px;color:#8e8e93}
 .badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:8px}
-.ok{background:#e8f8ee;color:#34a853}
-.late{background:#feeae8;color:#c84b31}
+.ok{background:#e8f8ee;color:#34a853}.late{background:#feeae8;color:#c84b31}
 .week-dots{display:flex;gap:3px;margin-top:6px}
 .wd{flex:1;height:5px;border-radius:3px;background:#f2f2f7}
 .wd.r{background:#2d5f8a}.wd.l{background:#4a7c59}
@@ -90,29 +96,26 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
 .cal-dl{font-size:10px;color:#8e8e93;padding:4px 0;font-weight:600}
 .cal-dl:first-child{color:#c84b31}.cal-dl:last-child{color:#2d5f8a}
-.cal-d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;border-radius:8px;position:relative}
+.cal-d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;border-radius:8px;position:relative;flex-direction:column;gap:1px}
 .cal-d.today{background:#c84b31;color:#fff;font-weight:700;border-radius:50%}
-.cal-d.has::after{content:’’;position:absolute;bottom:2px;width:4px;height:4px;border-radius:50%;background:#34c759}
-.cal-d.today.has::after{background:#fff}
-.cal-d.exam{background:#feeae8;border-radius:50%}
+.cal-d.studied{background:#e8f8ee}
+.cal-d.exam-day{background:#1a1a2e;color:#d4a843;font-weight:700;border-radius:50%}
+.cal-d.deadline{background:#feeae8;color:#c84b31;font-weight:700;border-radius:6px}
+.cal-label{font-size:7px;line-height:1;color:inherit;margin-top:1px}
 
 /* 기록 */
 .log-item{padding:11px 0;border-bottom:1px solid #f2f2f7}
 .log-item:last-child{border-bottom:none}
 .log-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
 .log-date{font-size:11px;font-weight:600;color:#8e8e93}
+.log-who{font-size:10px;font-weight:700;padding:1px 6px;border-radius:6px}
+.log-who.mijung{background:#fce8e3;color:#c84b31}
+.log-who.daseul{background:#e3f0e8;color:#4a7c59}
+.log-who.soyoung{background:#e3eaf5;color:#2d5f8a}
 .log-memo{font-size:12px;color:#555;margin-top:4px;line-height:1.5}
 
-/* 토스트 */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:#1c1c1e;color:#fff;padding:9px 18px;border-radius:20px;font-size:13px;font-weight:600;z-index:999;transition:transform .3s;white-space:nowrap}
 .toast.on{transform:translateX(-50%) translateY(0)}
-
-/* 지연 알람 배너 */
-.alert-banner{background:#feeae8;border:1.5px solid #f4b8b0;border-radius:13px;padding:13px 15px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
-.alert-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.alert-body{}
-.alert-title{font-size:13px;font-weight:700;color:#c84b31;margin-bottom:3px}
-.alert-msg{font-size:12px;color:#a03020;line-height:1.6}
 </style>
 
 </head>
@@ -123,16 +126,28 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
     <h1>日 스터디 체크</h1>
     <p id="todayStr"></p>
   </div>
-  <div class="dday"><b id="ddayNum">-</b><span>D-DAY</span></div>
+  <div class="dday-box">
+    <b id="ddayNum">-</b>
+    <span>시험 D-DAY</span>
+  </div>
+</div>
+
+<!-- 이름 선택 -->
+
+<div class="who-bar">
+  <div class="who-label">나는:</div>
+  <div class="who-btns">
+    <button class="who-btn on" onclick="setWho('mijung',this)">미정</button>
+    <button class="who-btn" onclick="setWho('daseul',this)">다슬</button>
+    <button class="who-btn" onclick="setWho('soyoung',this)">소영</button>
+  </div>
 </div>
 
 <div class="tabs">
   <button class="tab on" onclick="go('today',this)">✅ 오늘</button>
   <button class="tab" onclick="go('members',this)">👥 멤버</button>
-
-<button class="tab" onclick="go('cal',this)">📊 진도 · 캘린더</button>
-<button class="tab" onclick="go('log',this)">📋 기록</button>
-
+  <button class="tab" onclick="go('cal',this)">📊 진도·캘린더</button>
+  <button class="tab" onclick="go('log',this)">📋 기록</button>
 </div>
 
 <div class="wrap">
@@ -140,58 +155,76 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 <!-- 오늘 -->
 
 <div id="today" class="sec on">
-  <div id="alertBanner"></div>
-  <div class="card">
-    <div class="ct">오늘 수강 기록</div>
+  <div id="alertToday"></div>
 
-```
-<div class="input-row">
-  <div class="ir-left">
-    <div class="ico ico-r">📖</div>
-    <div><div class="ir-name">독해</div><div class="ir-sub">読解 · 전체 10강</div></div>
-  </div>
-  <div class="counter">
-    <button class="cb" onclick="cc('r',-1)">−</button>
-    <div class="cnum" id="cR">0</div>
-    <div class="cunit">강</div>
-    <button class="cb" onclick="cc('r',1)">+</button>
-  </div>
-</div>
+  <!-- 미정/다슬용 -->
 
-<div class="input-row">
-  <div class="ir-left">
-    <div class="ico ico-l">🎧</div>
-    <div><div class="ir-name">청해</div><div class="ir-sub">聴解 · 전체 13강</div></div>
+  <div id="formJlpt" class="card">
+    <div class="ct" id="formTitle">오늘 수강 기록 · 미정</div>
+    <div class="input-row">
+      <div class="ir-left">
+        <div class="ico ico-r">📖</div>
+        <div><div class="ir-name">독해</div><div class="ir-sub">読解 · 전체 10강</div></div>
+      </div>
+      <div class="counter">
+        <button class="cb" onclick="cc('r',-1)">−</button>
+        <div class="cnum" id="cR">0</div>
+        <div class="cunit">강</div>
+        <button class="cb" onclick="cc('r',1)">+</button>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="ir-left">
+        <div class="ico ico-l">🎧</div>
+        <div><div class="ir-name">청해</div><div class="ir-sub">聴解 · 전체 13강</div></div>
+      </div>
+      <div class="counter">
+        <button class="cb" onclick="cc('l',-1)">−</button>
+        <div class="cnum" id="cL">0</div>
+        <div class="cunit">강</div>
+        <button class="cb" onclick="cc('l',1)">+</button>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="ir-left">
+        <div class="ico ico-v">✏️</div>
+        <div><div class="ir-name">단어 암기</div><div class="ir-sub">오늘 외운 단어</div></div>
+      </div>
+      <div class="counter">
+        <button class="cb" onclick="cc('v',-1)">−</button>
+        <div class="cnum" id="cV">0</div>
+        <div class="cunit">개</div>
+        <button class="cb" onclick="cc('v',1)">+</button>
+      </div>
+    </div>
+    <div class="memo-wrap">
+      <label>📝 오늘 공부 메모</label>
+      <textarea class="memo-input" id="memo" rows="2" placeholder="예: 문제4 단문독해 2강, 어휘 어려웠음"></textarea>
+    </div>
+    <button class="save-btn" onclick="save()">💾 오늘 기록 저장</button>
   </div>
-  <div class="counter">
-    <button class="cb" onclick="cc('l',-1)">−</button>
-    <div class="cnum" id="cL">0</div>
-    <div class="cunit">강</div>
-    <button class="cb" onclick="cc('l',1)">+</button>
-  </div>
-</div>
 
-<div class="input-row">
-  <div class="ir-left">
-    <div class="ico ico-v">✏️</div>
-    <div><div class="ir-name">단어 암기</div><div class="ir-sub">오늘 외운 단어</div></div>
-  </div>
-  <div class="counter">
-    <button class="cb" onclick="cc('v',-1)">−</button>
-    <div class="cnum" id="cV">0</div>
-    <div class="cunit">개</div>
-    <button class="cb" onclick="cc('v',1)">+</button>
-  </div>
-</div>
+  <!-- 소영용 -->
 
-<div class="memo-wrap">
-  <label>📝 오늘 공부 메모 (선택)</label>
-  <textarea class="memo-input" id="memo" rows="2" placeholder="예: 문제4 단문독해 2강 완료, 어휘 어려웠음"></textarea>
-</div>
-
-<button class="save-btn" onclick="save()">💾 오늘 기록 저장</button>
-```
-
+  <div id="formSimple" class="card" style="display:none">
+    <div class="ct">오늘 공부 기록 · 소영</div>
+    <div class="input-row">
+      <div class="ir-left">
+        <div class="ico ico-v">✏️</div>
+        <div><div class="ir-name">단어 암기</div><div class="ir-sub">오늘 외운 단어</div></div>
+      </div>
+      <div class="counter">
+        <button class="cb" onclick="cc('v',-1)">−</button>
+        <div class="cnum" id="cV2">0</div>
+        <div class="cunit">개</div>
+        <button class="cb" onclick="cc('v',1)">+</button>
+      </div>
+    </div>
+    <div class="memo-wrap">
+      <label>📝 오늘 공부 메모</label>
+      <textarea class="memo-input" id="memo2" rows="2" placeholder="오늘 공부한 내용 간단히 적어요"></textarea>
+    </div>
+    <button class="save-btn" onclick="save()">💾 오늘 기록 저장</button>
   </div>
 </div>
 
@@ -207,8 +240,9 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
 <!-- 진도+캘린더 -->
 
 <div id="cal" class="sec">
+  <div id="alertCal"></div>
   <div class="card">
-    <div class="ct">전체 진도</div>
+    <div class="ct">전체 진도 (미정·다슬)</div>
     <div id="totalProg"></div>
   </div>
   <div class="card">
@@ -217,10 +251,10 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
   </div>
   <div class="card" style="background:#fef9e8;border:1px solid #fde68a">
     <div class="ct" style="color:#b8860b">📌 수강 계획</div>
-    <div style="font-size:12px;color:#555;line-height:2">
-      독해 10강 → <b>4주 완강</b> (주 3강, 5/13 목표)<br>
-      청해 13강 → <b>4.7주 완강</b> (주 3강, 6/15 목표)<br>
-      강의 마감 6/15 · 시험 7/5 💪
+    <div style="font-size:12px;color:#555;line-height:2.1">
+      독해 10강 → <b>5월 13일</b> 목표 (주 3강)<br>
+      청해 13강 → <b>6월 15일</b> 완강 (주 3강)<br>
+      🗓 강의 마감 <b>6/15</b> · 시험 <b>7/5</b>
     </div>
   </div>
   <div class="card">
@@ -230,18 +264,19 @@ body{font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f2f
       <button class="cal-nav" onclick="mth(1)">▶</button>
     </div>
     <div class="cal-grid" id="calGrid"></div>
-  </div>
-  <div class="card" style="font-size:11px;color:#8e8e93;line-height:2.2">
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#34c759;margin-right:5px"></span>공부한 날&nbsp;&nbsp;
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c84b31;margin-right:5px"></span>오늘&nbsp;&nbsp;
-    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#feeae8;border:1px solid #c84b31;margin-right:5px"></span>시험일 (7/5)
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:10px;font-size:10px;color:#8e8e93">
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#e8f8ee;border:1px solid #ccc;margin-right:3px"></span>공부한 날</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c84b31;margin-right:3px"></span>오늘</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:4px;background:#feeae8;border:1px solid #f4b8b0;margin-right:3px"></span>강의마감 6/15</span>
+      <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#1a1a2e;margin-right:3px"></span>시험일 7/5</span>
+    </div>
   </div>
 </div>
 
 <!-- 기록 -->
 
 <div id="log" class="sec">
-  <div id="alertBannerLog"></div>
+  <div id="alertLog"></div>
   <div class="card">
     <div class="ct">학습 기록</div>
     <div id="logList"></div>
@@ -258,27 +293,25 @@ firebase.initializeApp({
   projectId:"jlpt-mae",
   storageBucket:"jlpt-mae.firebasestorage.app",
   messagingSenderId:"382471244943",
-  appId:"1:382371244943:web:1f4b4263b2752884e9f4fa"
+  appId:"1:382471244943:web:1f4b4263b2752884e9f4fa"
 });
 var db = firebase.firestore();
 
 var TODAY = new Date().toISOString().split('T')[0];
+var whoId = 'mijung';
 var state = {r:0, l:0, v:0};
-var logs = []; // 나 (미정)
-var friendLogs = {}; // {memberId: [logs]}
+var allLogs = []; // 전체 기록
 
-// 멤버 정의
-var ME = {id:'mijung', name:'미정', av:'美', cls:'av-a'};
-var FRIENDS = [
-  {id:'daseul', name:'다슬', av:'花', cls:'av-b'},
-  {id:'soyoung', name:'소영', av:'星', cls:'av-c'},
+var MEMBERS = [
+  {id:'mijung', name:'미정', av:'美', cls:'av-a', jlpt:true},
+  {id:'daseul', name:'다슬', av:'花', cls:'av-b', jlpt:true},
+  {id:'soyoung', name:'소영', av:'星', cls:'av-c', jlpt:false},
 ];
-var ALL = [ME].concat(FRIENDS);
 
-// D-Day
-var exam = new Date('2025-07-05T00:00:00');
-var dd = Math.ceil((exam - new Date()) / 86400000);
-document.getElementById('ddayNum').textContent = dd > 0 ? dd : 'D-Day!';
+// D-Day (시험 7/5)
+var examDate = new Date('2025-07-05T00:00:00');
+var ddNum = Math.ceil((examDate - new Date()) / 86400000);
+document.getElementById('ddayNum').textContent = ddNum > 0 ? ddNum : (ddNum === 0 ? 'D-Day!' : 'D+'+Math.abs(ddNum));
 
 // 오늘 날짜
 var D=new Date(), DW=['일','월','화','수','목','금','토'];
@@ -286,30 +319,75 @@ document.getElementById('todayStr').textContent = (D.getMonth()+1)+'월 '+D.getD
 
 var calY=D.getFullYear(), calM=D.getMonth();
 
-function go(id,btn){
+// 이름 선택
+function setWho(id, btn) {
+  whoId = id;
+  document.querySelectorAll('.who-btn').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+  // 폼 전환
+  var isJlpt = (id !== 'soyoung');
+  document.getElementById('formJlpt').style.display = isJlpt ? 'block' : 'none';
+  document.getElementById('formSimple').style.display = isJlpt ? 'none' : 'block';
+  document.getElementById('formTitle').textContent = '오늘 수강 기록 · ' + {mijung:'미정',daseul:'다슬',soyoung:'소영'}[id];
+  // 오늘 기록 불러오기
+  loadToday();
+  // 알람 업데이트
+  updateAlerts();
+}
+
+function loadToday() {
+  var tl = allLogs.find(function(l){return l.date===TODAY && l.who===whoId;});
+  var isSoyoung = whoId === 'soyoung';
+  state.r = tl ? (tl.reading||0) : 0;
+  state.l = tl ? (tl.listening||0) : 0;
+  state.v = tl ? (tl.vocab||0) : 0;
+  if(!isSoyoung) {
+    document.getElementById('cR').textContent = state.r;
+    document.getElementById('cL').textContent = state.l;
+    document.getElementById('cV').textContent = state.v;
+    document.getElementById('memo').value = tl ? (tl.memo||'') : '';
+  } else {
+    document.getElementById('cV2').textContent = state.v;
+    document.getElementById('memo2').value = tl ? (tl.memo||'') : '';
+  }
+}
+
+// 탭
+function go(id, btn) {
   document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on');});
   document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});
   document.getElementById(id).classList.add('on'); btn.classList.add('on');
-  
+  if(id==='members') renderMembers();
   if(id==='cal'){renderProgress();renderCal();}
   if(id==='log') renderLog();
-  if(id==='members') renderMembers();
 }
 
+// 카운터
 function cc(t,d){
   state[t]=Math.max(0,state[t]+d);
-  document.getElementById(t==='r'?'cR':t==='l'?'cL':'cV').textContent=state[t];
+  var el = t==='r'?'cR':t==='l'?'cL':(whoId==='soyoung'?'cV2':'cV');
+  document.getElementById(el).textContent=state[t];
 }
 
+// 저장
 function save(){
-  var memo=document.getElementById('memo').value.trim();
-  db.collection('studyLog_mijung').doc(TODAY).set({
-    date:TODAY, reading:state.r, listening:state.l, vocab:state.v, memo:memo, ts:Date.now()
-  }).then(function(){showToast('✅ 저장됐어요!');})
-  .catch(function(e){showToast('오류: '+e.message);});
+  var isSoyoung = whoId === 'soyoung';
+  var memo = isSoyoung
+    ? document.getElementById('memo2').value.trim()
+    : document.getElementById('memo').value.trim();
+  var data = {
+    date: TODAY, who: whoId, memo: memo, ts: Date.now(),
+    reading: isSoyoung ? 0 : state.r,
+    listening: isSoyoung ? 0 : state.l,
+    vocab: state.v
+  };
+  // docId = 날짜_이름
+  db.collection('studyLog').doc(TODAY+'_'+whoId).set(data)
+    .then(function(){showToast('✅ 저장됐어요!');})
+    .catch(function(e){showToast('오류: '+e.message);});
 }
 
-// 이번주 날짜
+// 이번주
 function weekDates(){
   var now=new Date(),dow=now.getDay();
   var mon=new Date(now); mon.setDate(now.getDate()-(dow===0?6:dow-1));
@@ -318,26 +396,61 @@ function weekDates(){
   return arr;
 }
 
+// 지연 알람
+function getDelayInfo(){
+  var jlptLogs = allLogs.filter(function(l){return l.who==='mijung'||l.who==='daseul';});
+  var sumR = jlptLogs.reduce(function(s,l){return s+(l.reading||0);},0);
+  var sumL = jlptLogs.reduce(function(s,l){return s+(l.listening||0);},0);
+  var start = new Date('2025-04-15');
+  var weeksGone = Math.max(0,Math.floor((new Date()-start)/604800000));
+  var expR = Math.min(10,weeksGone*3);
+  var expL = sumR>=10 ? Math.min(13,(weeksGone-4)*3) : 0;
+  var behindR = Math.max(0,expR-sumR);
+  var behindL = Math.max(0,expL-sumL);
+  return {behindR:behindR, behindL:behindL, sumR:sumR, sumL:sumL};
+}
+
+function updateAlerts(){
+  // 소영은 알람 없음
+  if(whoId==='soyoung'){
+    ['alertToday','alertCal','alertLog'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.innerHTML='';
+    });
+    return;
+  }
+  var info = getDelayInfo();
+  var html = '';
+  if(info.behindR>0||info.behindL>0){
+    var msgs=[];
+    if(info.behindR>0) msgs.push('독해 <b>'+info.behindR+'강</b> 지연 (현재 '+info.sumR+'/10강)');
+    if(info.behindL>0) msgs.push('청해 <b>'+info.behindL+'강</b> 지연 (현재 '+info.sumL+'/13강)');
+    html='<div class="alert-banner"><div class="alert-icon">🚨</div><div><div class="alert-title">진도 지연 중이에요!</div><div class="alert-msg">'+msgs.join('<br>')+'<br>따라잡을 때까지 알람이 표시돼요.</div></div></div>';
+  }
+  ['alertToday','alertCal','alertLog'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.innerHTML=html;
+  });
+}
+
 // 멤버 현황
 function renderMembers(){
   var el=document.getElementById('memberList'); if(!el) return;
-  el.innerHTML = ALL.map(function(m){
-    var mLogs = m.id==='mijung' ? logs : (friendLogs[m.id]||[]);
-    var tl = mLogs.find(function(l){return l.date===TODAY;});
+  el.innerHTML=MEMBERS.map(function(m){
+    var tl=allLogs.find(function(l){return l.date===TODAY&&l.who===m.id;});
     var chips='', memo='', noStudy='';
     if(tl){
       if(tl.reading) chips+='<span class="chip chip-r">독해 '+tl.reading+'강</span>';
       if(tl.listening) chips+='<span class="chip chip-l">청해 '+tl.listening+'강</span>';
       if(tl.vocab) chips+='<span class="chip chip-v">단어 '+tl.vocab+'개</span>';
       if(tl.memo) memo='<div class="m-memo">💬 '+tl.memo+'</div>';
-      if(!tl.reading&&!tl.listening&&!tl.vocab) noStudy='<div class="m-none">오늘 기록 없음</div>';
+      if(!tl.reading&&!tl.listening&&!tl.vocab&&!tl.memo) noStudy='<div class="m-none">기록 없음</div>';
     } else {
       noStudy='<div class="m-none">아직 기록 없음</div>';
     }
     return '<div class="member-card">'+
-      '<div class="m-avatar '+m.cls+'">'+m.av+'</div>'+
-      '<div class="m-info">'+
-        '<div class="m-name">'+m.name+(m.id==='mijung'?' (나)':'')+'</div>'+
+      '<div class="m-av '+m.cls+'">'+m.av+'</div>'+
+      '<div style="flex:1">'+
+        '<div class="m-name">'+m.name+'</div>'+
+        '<div class="m-sub">'+(m.jlpt?'N3 수험생':'자유 스터디')+'</div>'+
         (chips?'<div class="chips">'+chips+'</div>':'')+
         memo+noStudy+
       '</div>'+
@@ -345,54 +458,17 @@ function renderMembers(){
   }).join('');
 }
 
-// 지연 알람 체크
-function checkAlert(){
-  var sumR=logs.reduce(function(s,l){return s+(l.reading||0);},0);
-  var sumL=logs.reduce(function(s,l){return s+(l.listening||0);},0);
-  var start=new Date('2025-04-15');
-  var weeksGone=Math.max(0,Math.floor((new Date()-start)/604800000));
-  var expR=Math.min(10,weeksGone*3);
-  var expL=sumR>=10?Math.min(13,(weeksGone-4)*3):0;
-  var behindR=Math.max(0,expR-sumR);
-  var behindL=Math.max(0,expL-sumL);
-
-  var html='';
-  if(behindR>0||behindL>0){
-    var msgs=[];
-    if(behindR>0) msgs.push('독해 <b>'+behindR+'강</b> 뒤처져 있어요 (현재 '+sumR+'/10강)');
-    if(behindL>0) msgs.push('청해 <b>'+behindL+'강</b> 뒤처져 있어요 (현재 '+sumL+'/13강)');
-    html='<div class="alert-banner">'+
-      '<div class="alert-icon">🚨</div>'+
-      '<div class="alert-body">'+
-        '<div class="alert-title">진도 지연 중이에요!</div>'+
-        '<div class="alert-msg">'+msgs.join('<br>')+'<br>진도를 따라잡을 때까지 알람이 표시돼요.</div>'+
-      '</div>'+
-    '</div>';
-  }
-  var b1=document.getElementById('alertBanner');
-  var b2=document.getElementById('alertBannerLog');
-  if(b1) b1.innerHTML=html;
-  if(b2) b2.innerHTML=html;
-}
-
-// 전체 진도
+// 진도 (미정+다슬 합산)
 function renderProgress(){
-  var totalR=logs.filter(function(l){return l.reading>0;}).length;
-  var totalL=logs.filter(function(l){return l.listening>0;}).length;
-  var sumR=logs.reduce(function(s,l){return s+(l.reading||0);},0);
-  var sumL=logs.reduce(function(s,l){return s+(l.listening||0);},0);
+  var jlptLogs=allLogs.filter(function(l){return l.who==='mijung'||l.who==='daseul';});
+  var sumR=jlptLogs.reduce(function(s,l){return s+(l.reading||0);},0);
+  var sumL=jlptLogs.reduce(function(s,l){return s+(l.listening||0);},0);
   var pR=Math.min(100,Math.round(sumR/10*100));
   var pL=Math.min(100,Math.round(sumL/13*100));
-
-  // 지연 체크
   var start=new Date('2025-04-15');
-  var weeksGone=Math.max(0,Math.floor((new Date()-start)/604800000));
-  var expR=Math.min(10,weeksGone*3);
-  var expL=sumR>=10?Math.min(13,(weeksGone-4)*3):0;
-  function badge(done,exp){
-    if(done>=exp) return '<span class="badge ok">✅ 순조로워요</span>';
-    return '<span class="badge late">⚠️ '+(exp-done)+'강 지연</span>';
-  }
+  var wg=Math.max(0,Math.floor((new Date()-start)/604800000));
+  var expR=Math.min(10,wg*3), expL=sumR>=10?Math.min(13,(wg-4)*3):0;
+  function badge(d,e){return d>=e?'<span class="badge ok">✅ 순조로워요</span>':'<span class="badge late">⚠️ '+(e-d)+'강 지연</span>';}
 
   document.getElementById('totalProg').innerHTML=
     '<div class="prog-blk">'+
@@ -402,18 +478,15 @@ function renderProgress(){
     '</div>'+
     '<div class="prog-blk">'+
       '<div class="prog-head"><div class="prog-name">🎧 청해</div><div style="font-size:11px;color:#8e8e93">'+(sumR<10?'독해 먼저!':sumL+'/13강')+'</div></div>'+
-      (sumR<10
-        ?'<div style="font-size:11px;color:#c7c7cc;padding:4px 0">독해 완강 후 시작해요</div>'
-        :'<div class="bar"><div class="fill fl" style="width:'+pL+'%"></div></div><div class="prog-foot"><div class="prog-pct">'+pL+'%</div>'+badge(sumL,expL)+'</div>'
-      )+
+      (sumR<10?'<div style="font-size:11px;color:#c7c7cc;padding:3px 0">독해 완강 후 시작해요</div>':
+        '<div class="bar"><div class="fill fl" style="width:'+pL+'%"></div></div><div class="prog-foot"><div class="prog-pct">'+pL+'%</div>'+badge(sumL,expL)+'</div>')+
     '</div>';
 
-  // 이번주
   var week=weekDates();
-  var wl=logs.filter(function(l){return week.indexOf(l.date)>=0;});
+  var wl=jlptLogs.filter(function(l){return week.indexOf(l.date)>=0;});
   var wR=wl.reduce(function(s,l){return s+(l.reading||0);},0);
   var wL=wl.reduce(function(s,l){return s+(l.listening||0);},0);
-  var wV=wl.reduce(function(s,l){return s+(l.vocab||0);},0);
+  var wV=allLogs.filter(function(l){return week.indexOf(l.date)>=0;}).reduce(function(s,l){return s+(l.vocab||0);},0);
   var wGoalR=sumR<10?3:0, wGoalL=sumR>=10?3:0;
   var rDots=week.map(function(dt){var h=wl.find(function(l){return l.date===dt;});return '<div class="wd'+(h&&h.reading>0?' r':'')+'"></div>';}).join('');
   var lDots=week.map(function(dt){var h=wl.find(function(l){return l.date===dt;});return '<div class="wd'+(h&&h.listening>0?' l':'')+'"></div>';}).join('');
@@ -421,7 +494,7 @@ function renderProgress(){
   document.getElementById('weekProg').innerHTML=
     (wGoalR>0?'<div class="prog-blk"><div class="prog-head"><div class="prog-name">📖 독해</div><div style="font-size:11px;color:#8e8e93">이번주 목표 <b>'+wGoalR+'강</b></div></div><div class="bar"><div class="fill fr" style="width:'+Math.min(100,Math.round(wR/wGoalR*100))+'%"></div></div><div class="prog-foot"><div class="prog-pct">'+wR+'/'+wGoalR+'강'+(wR>=wGoalR?' ✅':'')+'</div></div><div class="week-dots">'+rDots+'</div></div>':'')+
     (wGoalL>0?'<div class="prog-blk"><div class="prog-head"><div class="prog-name">🎧 청해</div><div style="font-size:11px;color:#8e8e93">이번주 목표 <b>'+wGoalL+'강</b></div></div><div class="bar"><div class="fill fl" style="width:'+Math.min(100,Math.round(wL/wGoalL*100))+'%"></div></div><div class="prog-foot"><div class="prog-pct">'+wL+'/'+wGoalL+'강'+(wL>=wGoalL?' ✅':'')+'</div></div><div class="week-dots">'+lDots+'</div></div>':'')+
-    '<div class="prog-blk"><div class="prog-head"><div class="prog-name">✏️ 단어</div><div style="font-size:11px;color:#8e8e93">이번주 총 <b>'+wV+'</b>개</div></div></div>';
+    '<div class="prog-blk"><div class="prog-head"><div class="prog-name">✏️ 단어 (전체)</div><div style="font-size:11px;color:#8e8e93">이번주 총 <b>'+wV+'</b>개</div></div></div>';
 }
 
 // 캘린더
@@ -430,15 +503,21 @@ function renderCal(){
   var g=document.getElementById('calGrid');
   var DL=['일','월','화','수','목','금','토'];
   var h=DL.map(function(d){return '<div class="cal-dl">'+d+'</div>';}).join('');
-  var first=new Date(calY,calM,1).getDay(),last=new Date(calY,calM+1,0).getDate();
+  var first=new Date(calY,calM,1).getDay(), last=new Date(calY,calM+1,0).getDate();
   for(var i=0;i<first;i++) h+='<div></div>';
   for(var d=1;d<=last;d++){
     var ds=calY+'-'+String(calM+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var isT=ds===TODAY, isE=ds==='2025-07-05';
-    var studied=logs.some(function(l){return l.date===ds&&(l.reading>0||l.listening>0);});
-    var cls=isE?'exam':isT?'today':'';
-    if(studied&&!isT) cls+=' has';
-    h+='<div class="cal-d '+cls+'">'+d+'</div>';
+    var isT=ds===TODAY;
+    var isExam=ds==='2025-07-05';
+    var isDeadline=ds==='2025-06-15';
+    var studied=allLogs.some(function(l){return l.date===ds;});
+    var cls='cal-d';
+    var label='';
+    if(isExam){cls+=' exam-day';label='<span class="cal-label">시험</span>';}
+    else if(isDeadline){cls+=' deadline';label='<span class="cal-label">마감</span>';}
+    else if(isT){cls+=' today';}
+    else if(studied){cls+=' studied';}
+    h+='<div class="'+cls+'">'+d+label+'</div>';
   }
   g.innerHTML=h;
 }
@@ -447,18 +526,20 @@ function mth(d){calM+=d;if(calM>11){calM=0;calY++;}if(calM<0){calM=11;calY--;}re
 // 기록
 function renderLog(){
   var el=document.getElementById('logList'); if(!el) return;
-  var sorted=logs.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
+  var sorted=allLogs.slice().sort(function(a,b){return b.ts-a.ts;});
   if(sorted.length===0){el.innerHTML='<p style="font-size:12px;color:#c7c7cc">아직 기록 없음</p>';return;}
-  el.innerHTML=sorted.slice(0,14).map(function(l){
+  el.innerHTML=sorted.slice(0,20).map(function(l){
     var chips='';
     if(l.reading) chips+='<span class="chip chip-r">독해 '+l.reading+'강</span>';
     if(l.listening) chips+='<span class="chip chip-l">청해 '+l.listening+'강</span>';
     if(l.vocab) chips+='<span class="chip chip-v">단어 '+l.vocab+'개</span>';
+    var nameMap={mijung:'미정',daseul:'다슬',soyoung:'소영'};
     return '<div class="log-item">'+
       '<div class="log-top">'+
         '<div class="log-date">'+l.date.slice(5).replace('-','/')+'</div>'+
-        '<div class="chips">'+chips+'</div>'+
+        '<span class="log-who '+(l.who||'')+'">'+( nameMap[l.who]||l.who)+'</span>'+
       '</div>'+
+      (chips?'<div class="chips" style="margin-bottom:3px">'+chips+'</div>':'')+
       (l.memo?'<div class="log-memo">💬 '+l.memo+'</div>':'')+
     '</div>';
   }).join('');
@@ -466,30 +547,14 @@ function renderLog(){
 
 function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},2200);}
 
-// Firebase 리스너 - 나
-db.collection('studyLog_mijung').onSnapshot(function(snap){
-  logs=snap.docs.map(function(d){return Object.assign({_id:d.id},d.data());});
-  var tl=logs.find(function(l){return l.date===TODAY;});
-  if(tl){
-    state.r=tl.reading||0; state.l=tl.listening||0; state.v=tl.vocab||0;
-    document.getElementById('cR').textContent=state.r;
-    document.getElementById('cL').textContent=state.l;
-    document.getElementById('cV').textContent=state.v;
-    if(tl.memo) document.getElementById('memo').value=tl.memo;
-  }
-  if(document.getElementById('progress').classList||true) checkAlert();
-  if(document.getElementById('cal').classList.contains('on')) renderProgress();
-  if(document.getElementById('cal').classList.contains('on')) renderCal();
-  if(document.getElementById('log').classList.contains('on')) renderLog();
+// Firebase 실시간
+db.collection('studyLog').onSnapshot(function(snap){
+  allLogs=snap.docs.map(function(d){return Object.assign({_id:d.id},d.data());});
+  loadToday();
+  updateAlerts();
   if(document.getElementById('members').classList.contains('on')) renderMembers();
-});
-
-// Firebase 리스너 - 친구들
-FRIENDS.forEach(function(f){
-  db.collection('studyLog_'+f.id).onSnapshot(function(snap){
-    friendLogs[f.id]=snap.docs.map(function(d){return Object.assign({_id:d.id},d.data());});
-    if(document.getElementById('members').classList.contains('on')) renderMembers();
-  });
+  if(document.getElementById('cal').classList.contains('on')){renderProgress();renderCal();}
+  if(document.getElementById('log').classList.contains('on')) renderLog();
 });
 </script>
 
